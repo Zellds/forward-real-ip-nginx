@@ -1,0 +1,34 @@
+version: '3.7'
+
+networks:
+  site:
+    driver: bridge
+
+services:
+
+  site:
+    image: bitnami/nginx:latest
+    container_name: site
+    user: 0:0
+    networks:
+      - site
+    volumes:
+      - ./app:/app
+      - ./docker/nginx/log:/var/log/nginx
+      - ./docker/nginx/site.conf:/opt/bitnami/nginx/conf/server_blocks/site.conf:ro
+    ports:
+      - 80:8080
+    working_dir: /app
+
+  phpfpm:
+    image: bitnami/php-fpm:latest
+    user: 1000:1000
+    container_name: phpfpm
+    networks:
+      - site
+    volumes: 
+      - ./app:/app
+      - ./docker/php-fpm/log:/var/log/phplog
+      - ./docker/php-fpm/custom-php.ini:/opt/bitnami/php/etc/conf.d/custom-php.ini
+      - ./docker/php-fpm/custom-phpfpm.conf:/opt/bitnami/php/etc/php-fpm.d/phpfpm.conf
+    working_dir: /app
