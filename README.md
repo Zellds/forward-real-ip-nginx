@@ -10,7 +10,8 @@
 >> * **``access.format = "%t \"%m %r%Q%q\"%{HTTP_X_REAL_IP}e"``** 
 >>
 >> as in the following example: **[file](https://github.com/Zellds/forward-real-ip-nginx/blob/dd90a7f36bdb3966c3c09d7cb80f5ae950699880/docker/php-fpm/custom-phpfpm.conf)**
-> ![example](docker/img/Example2.png)
+>>
+>>![example](docker/img/Example2.png)
 > 
 > Now checking the log, it should already contain the correct information.
 > #
@@ -18,8 +19,9 @@
  **[site.conf](https://github.com/Zellds/forward-real-ip-nginx/blob/dd90a7f36bdb3966c3c09d7cb80f5ae950699880/docker/nginx/site.conf)**, if it doesn't work, try to add the parameter.
 >* **``fastcgi_param HTTP_CLIENT_IP  $http_x_real_ip;``** 
 > 
->as in the following example: **[file](https://github.com/Zellds/forward-real-ip-nginx/blob/dd90a7f36bdb3966c3c09d7cb80f5ae950699880/docker/nginx/site.conf)**
-> ![example4](docker/img/example4.png)
+>> as in the following example: **[file](https://github.com/Zellds/forward-real-ip-nginx/blob/dd90a7f36bdb3966c3c09d7cb80f5ae950699880/docker/nginx/site.conf)**
+>> 
+>> ![example4](docker/img/example4.png)
 > #
 > ### Before:
 >![example2](docker/img/Example.png)
