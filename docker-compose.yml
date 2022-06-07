@@ -9,7 +9,6 @@ services:
   site:
     image: bitnami/nginx:latest
     container_name: site
-    user: 0:0
     networks:
       - site
     volumes:
@@ -22,7 +21,6 @@ services:
 
   phpfpm:
     image: bitnami/php-fpm:latest
-    user: 1000:1000
     container_name: phpfpm
     networks:
       - site
